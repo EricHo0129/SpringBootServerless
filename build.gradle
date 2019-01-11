@@ -12,11 +12,14 @@ repositories {
 }
 
 dependencies {
-  compile (
-          'org.springframework.boot:spring-boot-starter-web:2.1.1.RELEASE',
-          'com.amazonaws.serverless:aws-serverless-java-container-spring:[1.0,)',
-          'io.symphonia:lambda-logging:1.0.1'
-  )
+  
+  compile 'org.springframework.boot:spring-boot-starter-web:2.1.1.RELEASE'
+  compile ('com.amazonaws.serverless:aws-serverless-java-container-spring:[1.0,)'){
+  	exclude group: 'org.slf4j', module: 'slf4j-api'
+  	exclude group: 'ch.qos.logback', module: 'logback-classic'
+  }
+  compile 'io.symphonia:lambda-logging:1.0.1'
+  
   testCompile("junit:junit")
 }
 

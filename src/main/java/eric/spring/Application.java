@@ -13,7 +13,6 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @SpringBootApplication
-@RestController
 public class Application extends SpringBootServletInitializer {
 
 	/*
@@ -30,14 +29,6 @@ public class Application extends SpringBootServletInitializer {
     @Bean
     public HandlerAdapter handlerAdapter() {
         return new RequestMappingHandlerAdapter();
-    }
-    
-    @GetMapping("/{name}")
-    public String hello(@PathVariable("name") String name) {
-    	if (name == null) {
-    		name = "Guest";
-    	}
-    	return "Hello "+name;
     }
 	
 	public static void main(String[] args) {
