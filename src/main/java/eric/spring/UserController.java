@@ -1,5 +1,9 @@
 package eric.spring;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -16,8 +20,10 @@ public class UserController {
 	@GetMapping("/userpage")
 	public ModelAndView userPage(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("index");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.TAIWAN);
 		mav.addObject("name", request.getRemoteHost());
-		log.info("user.page...");
+		mav.addObject("time", df.format(new Date()));
+		
 		return mav;
 	}
 }
