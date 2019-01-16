@@ -2,6 +2,7 @@ plugins {
   id 'org.springframework.boot' version '2.1.1.RELEASE'
 }
 apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
 
 sourceCompatibility = 1.8   				// 設置 JDK 版本
 
@@ -14,13 +15,13 @@ repositories {
 dependencies {
   
   compile 'org.springframework.boot:spring-boot-starter-web:2.1.1.RELEASE'
+  compile 'org.springframework.boot:spring-boot-starter-thymeleaf:2.1.1.RELEASE'
   compile ('com.amazonaws.serverless:aws-serverless-java-container-spring:[1.0,)'){
   	exclude group: 'org.slf4j', module: 'slf4j-api'
   	exclude group: 'ch.qos.logback', module: 'logback-classic'
   }
   compile 'io.symphonia:lambda-logging:1.0.1'
-  
-  testCompile("junit:junit")
+  //testCompile("junit:junit")
 }
 
 task buildZip(type: Zip) {
